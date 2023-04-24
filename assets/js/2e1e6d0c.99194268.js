@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkvchat_v_2=self.webpackChunkvchat_v_2||[]).push([[815],{4131:a=>{a.exports=JSON.parse('{"label":"docusaurus","permalink":"/vchat-v2-docs/blog/tags/docusaurus","allTagsPath":"/vchat-v2-docs/blog/tags","count":4}')}}]);

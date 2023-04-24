@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkvchat_v_2=self.webpackChunkvchat_v_2||[]).push([[126],{1035:a=>{a.exports=JSON.parse('{"label":"hello","permalink":"/v-chat-sdk/vchat-v2-docs/blog/tags/hello","allTagsPath":"/v-chat-sdk/vchat-v2-docs/blog/tags","count":2}')}}]);
