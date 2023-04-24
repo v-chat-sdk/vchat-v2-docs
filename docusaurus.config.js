@@ -6,18 +6,18 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {{onBrokenLinks: string, baseUrl: string, presets: [string,Options][], organizationName: string, favicon: string, tagline: string, themeConfig: ThemeConfig & UserThemeConfig & AlgoliaThemeConfig, title: string, projectName: string, url: string, onBrokenMarkdownLinks: string, i18n: {defaultLocale: string, locales: string[]}}} */
 const config = {
-  title: "V Chat SDK",
+  title: "V Chat SDK V2",
   tagline:
     "V Chat is a cutting-edge chat API SaaS that leverages the power of Node.js and Socket.IO to provide a seamless real-time communication experience for its clients. This platform is designed to meet the needs of modern businesses that require instant communication solutions to engage their customers and teams efficiently.",
   url: "https://hatemragab.github.io",
-  baseUrl: "/v-chat-sdk/vchat-v2-docs/",
+  baseUrl: "/vchat-v2-docs/",
 
   favicon: "img/favicon.ico",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "hatemragab", // Usually your GitHub org/user name.
-  projectName: "VChatSdk-v2", // Usually your repo name.
+  organizationName: "v-chat-sdk", // Usually your GitHub org/user name.
+  projectName: "vchat-v2-docs", // Usually your repo name.
 
   onBrokenLinks: "throw",
   deploymentBranch: "gh-pages",
