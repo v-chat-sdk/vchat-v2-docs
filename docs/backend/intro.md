@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Backend intro
+# Backend
 
 ## Requirements for local & production
 
@@ -51,8 +51,8 @@ sidebar_position: 1
 ### How to get `firebase.adminsdk.json`
 - if this step not done correctly the notifications of chat will not arrive follow this
   to get your file [Link](https://www.youtube.com/watch?v=cXOzbKDXTh0)
-- To start the server in development just run this command in the app root `npm run start:dev`
-- if no errors then all done successfully
+- then update `firebase.adminsdk.json` by yours
+
 ### How to onesignalKeys 
 - create firebase account and follow this steps [Link](https://www.youtube.com/watch?v=FOkgfsTwvC4)
 
@@ -61,9 +61,18 @@ sidebar_position: 1
 2. `npm run start:dev` 
 3. if you see `app run in development` then your code is ready for development server in production you should see `production`
 4. for production run `npm run build` then `npm run start:prod`
+5. access the server for development in `localhost:3001` for production in port `80` if you need to change this update
+6. update this line in `src/main.js` `await app.listen(isDev ? 3001 : 80);`
 
+### Docker ready
+- if your have docker run into your system then you can go by run the `Dockerfile`
+- this `Dockerfile` only up the v_chat_sdk without mongodb or redis you need to manage it by your self
+- you need to run redis container and mongo db if you save the mongo db inside the same machine and update the `.env.production`
+
+### information's
+1. the app not use Persistent Data inside the system for chats it saved in `mongo` media in `S3`
 
 ### some errors may happen 
 1. if you see `ERROR [ExceptionHandler] Configuration key "JWT_SECRET" does not exist
-   TypeError: Configuration key "JWT_SECRET" does not exist` this means the nestjs cant read your .env.* file 
-2. to fix this make sure you inject the environment variable 
+   TypeError: Configuration key "JWT_SECRET" does not exist` this means the nestjs cant read your `.env.*` file 
+2. to fix this make sure you inject the environment variable
