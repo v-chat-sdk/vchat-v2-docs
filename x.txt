@@ -25,3 +25,10 @@ please put this data in table
 i have chat saas system i want to describe in the documents in .md file that it need minimum server limits
 1. 1 cpu core and 1gb ram and
 for store data you need to have mongo db database you can host free one from mongodb atlas
+
+i have saas system called v_chat witch let users to add some features to there system i want to explain to developers that
+for make link communication between your system and v_chat system we use some intermediate called identifier which must be
+unique in your system it can be the user id in your database system this is the Link between us for example
+if user click to some user mention name usually the action is to open the peer user page but this should handle out
+of v chat scope so i have created some callback function pass the identifier to you so you can handle open peer page
+and load the peer data
