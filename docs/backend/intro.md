@@ -15,6 +15,7 @@ title: Backend installation
 5. create aws account and register new S3 bucket make sure to have this data
 
 - Follow this video for more info [Link](https://www.youtube.com/watch?v=NZElg91l_ms&t=585s)
+- after update you will need to update some policy
 - update this values inside the .env.*
 
 1. S3_ACCESS_KEY_ID="AKIA--------"
