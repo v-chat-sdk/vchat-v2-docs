@@ -7,12 +7,15 @@ title: Apis
 ## Postman apis
 
 - clone our postman collection from [here](https://documenter.getpostman.com/view/24524392/2s93Jox6Dq)
-- all parameters all described there postman it self documents inside `v_chat_sdk_v2` collection
+- all parameters all described there postman itself documents inside `v_chat_sdk_v2` collection
+  ![](./img/postman_docs.png)
 - there are global environment in postman you need to update the `baseUrl` to if development to `localhost:3001/api/v2`
-  update the `3001` to your port
+  update the `3001` to your port see `IMAGE 1`
 - if production put the real server ip contact with the port and `/api/v2`
 - usually you don't do anything with postman but for make sure the apis works correctly you need to test at lest one
   endpoint
+- `IMAGE 1`
+  ![IMAGE 1](./img/postman_global_env.png)
 
 ## some important notes
 
