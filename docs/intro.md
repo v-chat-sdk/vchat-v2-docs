@@ -4,7 +4,7 @@ id: intro
 title: vchat-sdk-V2
 ---
 
-vchat-sdk is a Saas chat system that provides real-time messaging capabilities for your web or mobile applications. It
+Vchat-sdk is a Saas (software as service) chat system that provides real-time messaging capabilities for your web or mobile applications. It
 is divided into two parts: the server-side and the client-side. The server-side is built using Node.js and Socket.IO for
 real-time communication, and MongoDB for storing all data.
 
@@ -21,6 +21,7 @@ Get started by **creating a new app or existing app in production**.
 - **vchat-sdk** is a easy way to integrate advanced real time message chat with 6 public api only 👌
 - **vchat-sdk** use **Node js** as backend service and **Firebase** for (push notifications only) message database
   is **Mongo DB**
+- for clint side is `flutter`
 
 ## About Micro Service
 
@@ -131,4 +132,4 @@ chat system from scratch.
 
 ## contact me
 - you can contact me at `hatemragapdev@gmail.com` or skype `live:.cid.607250433850e3a6` 
-- iam offer server deployment for more info [visit](./backend/intro.md)
+- iam offer server deployment for more info [visit](https://v-chat-sdk.github.io/vchat-v2-docs/docs/backend/intro#still-need-more-support)

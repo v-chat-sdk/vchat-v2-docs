@@ -33,17 +33,17 @@ title: Backend installation
 - `REDIS_URL`="redis://localhost:6379" put the url of your **REDIS** server
 - `issuer`="v_chat_sdk_v2@gmail.com"
 - `audience`="chat.vchatsdk.com"
-
-- `encryptHashKey`="V_CHAT_SDK_V2_VERY_STRONG_KEY" very storage password this `must` be same as flutter encryptHashKey
-
+- `encryptHashKey`="V_CHAT_SDK_V2_VERY_STRONG_KEY" very storage password this `must` be same as
+  flutter `encryptHashKey` this key `not changeable` if you change this key all old logins `will fail` please wait until
+  next update i will found solution to let you update safely
 - `isOneSignalEnabled` ="true" if you support onesignal
 - `isFirebaseFcmEnabled` ="true" if you support firebase fcm then you should update `firebase.adminsdk.json` file by
   your firebase account real file.
-- `oneSignalAppId`="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx"
-- `oneSignalApiKey`="xxxxxxxxxxxx"
+- `oneSignalAppId`="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx" leave this empty if you not support `onesignal_push`
+- `oneSignalApiKey`="xxxxxxxxxxxx" leave this empty if you not support `onesignal_push`
 - `S3_ACCESS_KEY_ID`="AKxxxxxxxxxx" s3 access key from the console
 - `S3_SECRET_KEY`="xxxxxx" s3 secret access key from the console
-- `BUCKET_REGION`="xxxxx"
+- `BUCKET_REGION`="xxxxx" BUCKET_REGION
 - `BUCKET`="xxxxxxx" **bucket name**
 - `NODE_ENV`=`development` production for `.env.production`
 - `ignoreEnvFile`="false" set this to true if you will inject the env variables from the OS system level if you will use
@@ -73,8 +73,11 @@ title: Backend installation
 4. if you see `app run in development` then your code is ready for development server in production you should
    see `production`
 5. for production run `npm run build` then `npm run start:prod`
-6. access the server for development in `localhost:3001` for production in port `80` if you need to change this update
-7. update this line in `.env file` update `PORT`
+6. access the server for development in `localhost:3001/api/v2` for production in port `80` if you need to change this
+   update
+
+- update this line in `.env file` update `PORT` if you run the docker then make sure to update
+  then `environment variable os (env)`
 
 ### Docker ready
 
@@ -96,8 +99,11 @@ title: Backend installation
 
 1. if you see `ERROR [ExceptionHandler] Configuration key "JWT_SECRET" does not exist
    TypeError: Configuration key "JWT_SECRET" does not exist` this means the nestjs cant read your `.env.*` file
-2. to fix this make sure you inject the environment variable or make sure the .env.production exist in the root of file
-   .git may ignore it
+
+- to fix this make sure you inject the environment variable or make sure the .env.production exist in the root of file
+  .git may ignore it
+- `The default Firebase app does not exist. Make sure you call initializeApp() before using any of the Firebase services.`
+- this happens because you enabled FCM but not [configure](https://www.youtube.com/watch?v=cXOzbKDXTh0) it
 
 ### Still need more support
 
