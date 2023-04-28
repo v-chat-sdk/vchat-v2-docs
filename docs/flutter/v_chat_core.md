@@ -20,29 +20,27 @@ Future initVChat(GlobalKey<NavigatorState> navigatorKey) async {
     navigatorKey: navigatorKey,
     vChatConfig: VChatConfig(
       enableLog: kDebugMode,
-      //optional
-      enableEndToEndMessageEncryption: false,
       //optional not working yet
-      maxGroupMembers: 512,
+      enableEndToEndMessageEncryption: false,
       //optional
+      maxGroupMembers: 512,
+      //optional max message forward to or share to chats
       maxForward: 7,
       //optional
       maxBroadcastMembers: 512,
-      //optional
+      //optional callback when user try to report some one else
       onReportUserPress: null,
       //optional
       googleMapsApiKey: "YOUR googleMapsApiKey",
-      encryptHashKey: "V_CHAT_SDK_V2_VERY_STRONG_KEY",
       //must be same as the backend
-      //
+      encryptHashKey: "V_CHAT_SDK_V2_VERY_STRONG_KEY",
       baseUrl: "Your v chat base url for local run put localhost:3001 for local run on emulator put 10.0.2.2:3001",
-      //
       vPush: VPush(
         enableVForegroundNotification: true,
         vPushConfig: const VLocalNotificationPushConfig(),
         fcmProvider: VChatFcmProver(),
         oneSignalProvider: VChatOneSignalProver(
-          appId: "oneSignalKey",
+          appId: "oneSignalKey", //your onesignal appId
         ),
       ),
     ),
@@ -241,6 +239,8 @@ class OverridesVChatAr extends VArLocalizations {
 ``` 
     VChatController.I.nativeApi.streams.totalUnreadMessageCountStream.listen((total) { 
       ///do your logic here
+      ///this stream will call when ever new unread or read done will retrun the total unread there
+      /// dont forget to dispose the stream!
     });
 ```
 

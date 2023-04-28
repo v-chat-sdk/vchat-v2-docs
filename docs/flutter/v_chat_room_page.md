@@ -29,3 +29,32 @@ VChatPage(
 - so you can call it in initState method of base home screen scaffold do some debugs to insure it call once
 
 ## how to update theme
+- to update theme and render custom message this can be through the theme extensions inside `ThemeData` in `darkTheme`
+  or `theme` inside the `MaterialApp`
+- for `dark` theme use
+
+``` 
+darkTheme: ThemeData(
+          extensions: [
+            VRoomTheme.light().copyWith(
+                scaffoldDecoration: VRoomTheme.light()
+                    .scaffoldDecoration
+                    .copyWith(color: lightColorScheme.background),
+              ),
+          ],
+        ),
+```
+
+- for `light` theme use
+
+```
+   theme: ThemeData(
+            extensions: [
+            VRoomTheme.light().copyWith(
+                scaffoldDecoration: VRoomTheme.light()
+                    .scaffoldDecoration
+                    .copyWith(color: lightColorScheme.background),
+              ),
+            ],
+          ),
+```
