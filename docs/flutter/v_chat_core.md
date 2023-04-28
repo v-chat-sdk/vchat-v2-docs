@@ -19,15 +19,24 @@ Future initVChat(GlobalKey<NavigatorState> navigatorKey) async {
   await VChatController.init(
     navigatorKey: navigatorKey,
     vChatConfig: VChatConfig(
-      enableLog : kDebugMode, //optional
-      enableEndToEndMessageEncryption : false,  //optional not working yet
-      maxGroupMembers : 512,  //optional
-      maxForward : 7,  //optional
-      maxBroadcastMembers : 512,  //optional
-      onReportUserPress:null,  //optional
+      enableLog: kDebugMode,
+      //optional
+      enableEndToEndMessageEncryption: false,
+      //optional not working yet
+      maxGroupMembers: 512,
+      //optional
+      maxForward: 7,
+      //optional
+      maxBroadcastMembers: 512,
+      //optional
+      onReportUserPress: null,
+      //optional
       googleMapsApiKey: "YOUR googleMapsApiKey",
       encryptHashKey: "V_CHAT_SDK_V2_VERY_STRONG_KEY",
-      baseUrl: "Your v chat base url for local run put localhost:3001 for local run on emulator put 10.0.2.2:3001", //
+      //must be same as the backend
+      //
+      baseUrl: "Your v chat base url for local run put localhost:3001 for local run on emulator put 10.0.2.2:3001",
+      //
       vPush: VPush(
         enableVForegroundNotification: true,
         vPushConfig: const VLocalNotificationPushConfig(),
@@ -56,15 +65,24 @@ Future initVChat(GlobalKey<NavigatorState> navigatorKey) async {
             vRoom: vRoom,
             //set message page configuration here
             vMessageConfig: VMessageConfig(
-              googleMapsApiKey: dotenv.env['googleMapsApiKey'],//optional if null then no shar location
-              isCallsAllowed: true, //optional
-              onMessageAttachmentIconPress:null, //optional
-              onUserUnBlockAnother:null, //optional
-              showDisconnectedWidget : true,  //optional
-              onMessageLongPress:null,//optional
-              onUserBlockAnother:null, //optional
-              maxMediaSize : 1024 * 1024 * 50, //optional
-              compressImageQuality : 55, //optional
+              googleMapsApiKey: dotenv.env['googleMapsApiKey'],
+              //optional if null then no shar location
+              isCallsAllowed: true,
+              //optional if you want to override the the ui of the model sheet witch open when user want to pick image or media
+              onMessageAttachmentIconPress: null,
+              //optional if user press the un block action inside the chat will be block auto from v chat but you maybe want to do more
+              onUserUnBlockAnother: null,
+              //optional when internet connection week or lost there are red widget say connecting... you can hide it if you wish
+              showDisconnectedWidget: true,
+              //optional not working yet
+              onMessageLongPress: null,
+              //optional if user press the block action inside the chat will be block auto from v chat but you maybe want to do more
+              onUserBlockAnother: null,
+              //optional set max upload media size it now 50mb
+              maxMediaSize: 1024 * 1024 * 50,
+              //optional set the image Quality
+              compressImageQuality: 55,
+              //optional max Record Time (not working for now)
               maxRecordTime: const Duration(minutes: 30), //optional
             ),
           ));
@@ -94,7 +112,7 @@ Future initVChat(GlobalKey<NavigatorState> navigatorKey) async {
                 BroadcastRoomSettingsView(settingsModel: data),
           ));
         },
-        //when user click on group mention so need to open peer profile you should handle this out of v chat scope
+        //when user click on group mention or username inside group chat so need to open peer profile you should handle this out of v chat scope 
         toUserProfilePage: (context, identifier) {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => PeerProfileView(identifier: identifier),
@@ -106,13 +124,14 @@ Future initVChat(GlobalKey<NavigatorState> navigatorKey) async {
 }
 ```
 
+- `encryptHashKey` must be same as the backend so ask the backend about it! it must be secret dont share it
 - you need to call this function in `main.dart` after `WidgetsFlutterBinding.ensureInitialized();`
 - create `final _navigatorKey = GlobalKey<NavigatorState>();` and pass this key to the function and dont forget to add
   it to `MaterialApp` to `navigatorKey: _navigatorKey,` this used to let user navigate when clicking to notification
 - `vChatConfig: VChatConfig()` this contain the configuration of the package
 - `googleMapsApiKey` set it or ignore it if you ignore the send location in chat will disappear
 - `encryptHashKey` must be strong and not changeable and must be same as `.env` file in backend
-- `baseUrl` the sev base url of the v chat server without /api or v1 just like `Uri.parse("http://localhost:3001")`
+- `baseUrl` the sev base url of the v chat server without `/api or v1` just like `Uri.parse("http://localhost:3001")`
   or `Uri.parse("http://domain.com")`
 - `VPush` setup notifications provider `enableVForegroundNotification` if this true then you will let v chat handle in
   app open notifications
@@ -125,25 +144,24 @@ Future initVChat(GlobalKey<NavigatorState> navigatorKey) async {
 
 - this api must be called after user login or register into your system the best place is in home `initState` page
 - usually the home open when user already has access if not you can put conditions and handle it
-- this endpoint responsible for connect the user and make him online and receive messages
+- this endpoint responsible for connect the user and make him online and receive messages in realtime
 
-```dart
-    ///get user saved login data from your system
+``` 
+///get user saved login data from your system
 final data = VAppPref.getMap(SStorageKeys.myProfile);
 
 ///its recommended to set fullName if it available this data for the current login user
-VChatController.I.profileApi.connect
-(
-identifier: data!['identifier'],
-fullName:
-null
-,
-);
+  await VChatController.I.profileApi.connect
+   (
+       identifier: data!['userId'],
+       fullName:"name" it can be null
+   );
 ```
 
 ## how to start new chat
 
-- call this api
+- call this api form any where in your app forget the `identifier` is same as the id which used for `connect` the user
+  in the sept above
 
 ```
 await VChatController.I.roomApi.openChatWith(
@@ -173,6 +191,7 @@ await VChatController.I.roomApi.openChatWith(
 
 - to override just make new class call it `OverridesVChatAr`
 - with the following data
+- v chat not support `countryCode` only just `languageCode`
 
 ```
 class OverridesVChatAr extends VArLocalizations {
@@ -190,6 +209,8 @@ class OverridesVChatAr extends VArLocalizations {
 
 - for add new language create new class with the language name like `NewVChatLangTr`
 - then create the class like `class NewVChatLangTr extends VChatLocalizationLabels {}` and override all keys as you want
+
+#### to update v chat sdk language you need to call this `VChatController.I.updateLanguageCode("en");`
 
 ## do more
 
@@ -313,6 +334,7 @@ await VChatController.I.roomApi.changeGroupMemberRole(
     role: VGroupMemberRole.admin,
 );
 ```
+
 - Kick user if you are `admin` or `superAdmin`
 
 ``` 
@@ -321,3 +343,8 @@ await VChatController.I.roomApi.changeGroupMemberRole(
           peerIdentifier: identifier,
         );
 ```
+
+### notifications
+
+- you need to install [overlay_support](https://pub.dev/packages/overlay_support)
+- and wrap the `MaterialApp` with `OverlaySupport.global()` this will add support for in app notifications
