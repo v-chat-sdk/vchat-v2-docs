@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkvchat_v_2=self.webpackChunkvchat_v_2||[]).push([[79],{976:e=>{e.exports=JSON.parse('{"permalink":"/vchat-v2-docs/blog/tags/hello","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

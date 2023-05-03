@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkvchat_v_2=self.webpackChunkvchat_v_2||[]).push([[1322],{2385:a=>{a.exports=JSON.parse('{"label":"facebook","permalink":"/vchat-v2-docs/blog/tags/facebook","allTagsPath":"/vchat-v2-docs/blog/tags","count":1}')}}]);
