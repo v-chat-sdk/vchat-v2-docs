@@ -4,8 +4,8 @@ id: apis
 title: Apis
 ---
 
-## Postman apis
-
+## Postman apis (Advanced use)
+- this is `Advanced` part you can ignore this part it unless you know to you do
 - clone our postman collection from [here](https://documenter.getpostman.com/view/24524392/2s93Jox6Dq)
 - all parameters all described there postman itself documents inside `v_chat_sdk_v2` collection
   ![IMAGE](./img/postman_docs.png)
@@ -14,8 +14,9 @@ title: Apis
 - if production put the real server ip contact with the port and `/api/v2`
 - usually you don't do anything with postman but for make sure the apis works correctly you need to test at lest one
   endpoint
+- you need to update the postman v chat production env to your site configuration
 - `IMAGE 1`
-  ![IMAGE 1](./img/postman_global_env.png)
+  ![IMAGE 1](./img/postman_env.png)
 
 ## some important notes
 

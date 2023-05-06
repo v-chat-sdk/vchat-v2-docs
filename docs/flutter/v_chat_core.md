@@ -143,6 +143,10 @@ Future initVChat(GlobalKey<NavigatorState> navigatorKey) async {
 - this api must be called after user login or register into your system the best place is in home `initState` page
 - usually the home open when user already has access if not you can put conditions and handle it
 - this endpoint responsible for connect the user and make him online and receive messages in realtime
+- here is example of how you can get the user data from your system and pass it to v chat your system user data
+  typically is available after user login or register in your system and you already save it by some way then you need
+  to get it and pass to v chat so dont worry about `final data = VAppPref.getMap(SStorageKeys.myProfile);` you dont need
+  to put this line in your system because by this line i get the data saved from my system
 
 ``` 
 ///get user saved login data from your system

@@ -64,7 +64,7 @@ Get started by **creating a new app or existing app in production**.
 6. [WebRtc](https://webrtc.org) for video and voice call but not stable 100% and need to
    paid [turn](https://webrtc.org/getting-started/turn-server) server so i will add supports for [agora.io](https://www.agora.io/en)
 7. Clint side sdk only we support [Flutter](https://flutter.dev) with this public [repo](https://github.com/hatemragab/v_chat_sdk) for support all 
-
+8. Flutter for clint side and support `android ios web windwos mac`
 ## Server Requirements for vchat-sdk
 
 vchat-sdk is a lightweight Saas chat system that requires minimum server resources.
@@ -76,6 +76,7 @@ To run vchat-sdk, you need the following server specifications:
 - fast ssd storage
 - any ubuntu version above 18
 - we recommend to host in [digitalocean](https://www.digitalocean.com/)
+- domain name we recommend [nameCheap](https://www.namecheap.com)
 
 In addition, you need to have a MongoDB database to store data. You can host a free MongoDB database on MongoDB Atlas,
 which is a cloud-based database service that provides a simple and secure way to manage your data.
