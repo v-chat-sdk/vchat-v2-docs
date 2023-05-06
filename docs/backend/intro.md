@@ -4,112 +4,115 @@ id: intro
 title: Backend installation
 ---
 
-## Requirements for local & production
+## Local & Production Environment Setup
 
-1. install nodejs and npm and check the versions you should have node version above `v16` check node version
-   by `node -v`
-2. install cross-env globally `npm i -g cross-env` for manage to set the production or development env
-   & `npm install -g @nestjs/cli` for build for nestjs
-3. install [Redis](https://redis.io) this used for socket.io connection for cluster mode support `must be v 7` or above
-4. install [mongodb](https://www.mongodb.com/try/download/community-kubernetes-operator) mim `v4.4` or `v6` is
-   recommended
-5. create aws account and register new S3 bucket make sure to have this data
+### Requirements
 
-- Follow this video for more info [Link](https://www.youtube.com/watch?v=NZElg91l_ms&t=585s)
-- after update you will need to update some policy
-- update this values inside the .env.*
+1. Install Node.js (version `v16` or higher) and npm. Check the Node.js version using `node -v`.
+2. Install only if you not `docker user` cross-env (`npm i -g cross-env`) for managing production or development
+   environments and NestJS
+   CLI (`npm install -g @nestjs/cli`).
+3. Install [Redis](https://redis.io) (version `v7` or higher) for socket.io cluster mode support.
+4. Install [MongoDB](https://www.mongodb.com/try/download/community-kubernetes-operator) (minimum `v4.4`,
+   recommended `v6`).
+5. Create an AWS account and register a new S3 bucket. Keep the following information handy:
 
-1. AWS_ACCESS_KEY_ID="AKIA--------"
-2. AWS_SECRET_ACCESS_KEY="ax2nDid-------"
-3. BUCKET_REGION="eu------"
-4. BUCKET="-------"
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - BUCKET_REGION
+    - BUCKET
 
-## .env files
+   For more information, follow this [video tutorial](https://www.youtube.com/watch?v=NZElg91l_ms&t=585s).
 
-1. You have **.env.development** and **.env.production**
-2. `.env.production` put the data of production in this file
+### Environment Configuration
 
-- `DB_URL`="mongodb://127.0.0.1:27017/v_chat_sdk_v2" **mongo db full url**
-- `JWT_SECRET`="a%dyFjcZp*xL$Qbek" **very storage password**
-- `REDIS_URL`="redis://localhost:6379" put the url of your **REDIS** server
-- `issuer`="v_chat_sdk_v2@gmail.com"
-- `audience`="chat.vchatsdk.com"
-- `encryptHashKey`="V_CHAT_SDK_V2_VERY_STRONG_KEY" very storage password this `must` be same as
-  flutter `encryptHashKey` this key `not changeable` if you change this key all old logins `will fail` please wait until
-  next update i will found solution to let you update safely
-- `isOneSignalEnabled` ="true" if you support onesignal
-- `isFirebaseFcmEnabled` ="true" if you support firebase fcm then you should update `firebase.adminsdk.json` file by
-  your firebase account real file.
-- `oneSignalAppId`="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx" leave this empty if you not support `onesignal_push`
-- `oneSignalApiKey`="xxxxxxxxxxxx" leave this empty if you not support `onesignal_push`
-- `AWS_ACCESS_KEY_ID`="AKxxxxxxxxxx" s3 access key from the console
-- `AWS_SECRET_ACCESS_KEY`="xxxxxx" s3 secret access key from the console
-- `BUCKET_REGION`="xxxxx" BUCKET_REGION
-- `BUCKET`="xxxxxxx" **bucket name**
-- `NODE_ENV`=`production` for `.env.production`
-- `ignoreEnvFile`="false" set this to true if you will inject the env variables from the OS system level if you will use
-  the .env.* file the let it false
-- `EDIT_MODE` ="false" for do some urgent apis updates set to to **false** now
-- `PORT`=`3001` and `80` for production set nodejs exported port to work
+1. Two environment files are available: **.env.development** and **.env.production**.
+2. Update **.env.production** with production data:
 
-### How to get `firebase.adminsdk.json`
+   ```
+   DB_URL="mongodb://127.0.0.1:27017/v_chat_sdk_v2" # MongoDB full URL
+   JWT_SECRET="a%dyFjcZp*xL$Qbek" # Secure password
+   REDIS_URL="redis://localhost:6379" # Redis server URL
+   issuer="v_chat_sdk_v2@gmail.com"
+   audience="chat.vchatsdk.com"
+   encryptHashKey="V_CHAT_SDK_V2_VERY_STRONG_KEY" # Must be the same as the Flutter encryptHashKey and unchangeable
+   isOneSignalEnabled="true" # Set to true if using OneSignal
+   isFirebaseFcmEnabled="true" # Set to true if using Firebase FCM, and update the firebase.adminsdk.json file
+   oneSignalAppId="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx" # Leave empty if not using OneSignal push
+   oneSignalApiKey="xxxxxxxxxxxx" # Leave empty if not using OneSignal push
+   AWS_ACCESS_KEY_ID="AKxxxxxxxxxx" # S3 access key from the console
+   AWS_SECRET_ACCESS_KEY="xxxxxx" # S3 secret access key from the console
+   BUCKET_REGION="xxxxx" # S3 bucket region
+   BUCKET="xxxxxxx" # S3 bucket name
+   NODE_ENV="production" # For .env.production file
+   ignoreEnvFile="false" # Set to true if injecting environment variables from the OS system level
+   EDIT_MODE="false" # Set to false for urgent API updates
+   PORT="3001" # Use 80 for production, set the Node.js exported port
+   ```
 
-- if this step not done correctly the notifications of chat will not arrive follow this
-  to get your file [Link](https://www.youtube.com/watch?v=cXOzbKDXTh0)
-- then update `firebase.adminsdk.json` by yours
+   Note: Changing the `encryptHashKey` will cause old logins to fail. A solution for safe updates will be provided in
+   future updates.
 
-### How to onesignalKeys
+### Obtaining `firebase.adminsdk.json`
 
-- create firebase account and follow this steps [Link](https://www.youtube.com/watch?v=FOkgfsTwvC4) to get the keys and
-  update
+1. To ensure chat notifications work properly, follow [this video](https://www.youtube.com/watch?v=cXOzbKDXTh0) to
+   obtain the `firebase.adminsdk.json` file.
+2. Replace the existing `firebase.adminsdk.json` file with your new one.
 
-1. `oneSignalAppId`="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx"
-2. `oneSignalApiKey`="xxxxxxxxxxxx"
+### Obtaining OneSignal Keys
 
-### run the code (without docker)
+1. Create a Firebase account and follow [this video](https://www.youtube.com/watch?v=FOkgfsTwvC4) to obtain OneSignal
+   keys.
+2. Update the following fields with your OneSignal keys:
 
-1. open terminal in the `backend` code root folder
-2. `npm i` or `npm i --force` if some problem happens
-3. `npm run start:prod`
-4. if you see `app run in production` then your code is ready for production
-5. to get deploy dist folder run `npm run build` this will generate `dist` file witch can use to run in production
-   server
-6. access the server for development in `localhost:80` for production in port `80` if you need to change this
-   update if you cant access the server at this `port 80` you can change this port at `.env.production file`
-7. update this line in `.env file` update `PORT` if you run the docker then make sure to update
-  then `environment variable os (env)`
+   ```
+   oneSignalAppId="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx"
+   oneSignalApiKey="xxxxxxxxxxxx"
+   ```
 
-### run the code (with docker)
+### Running the Code (Without Docker)
 
-1. install [docker](https://www.docker.com) and docker compose
+1. Open a terminal in the `backend` root folder.
+2. Run `npm i` or `npm i --force` if issues occur.
+3. Run `npm run start:prod`.
+4. If you see "app run in production," your code is production-ready.
+5. Generate a `dist` folder for deployment with `npm run build`.
+6. Access the development server at `localhost:80` and production server at port `80`. Update the port
+   in `.env.production` if necessary.
+7. Update the `PORT` in the `.env` file if using Docker, and ensure you update the environment variable in the OS (env).
 
-- if your have docker run into your system then you can go by run the `Dockerfile`
-- this `Dockerfile` only up the v_chat_sdk without mongodb or redis you need to manage it by your self
-- you need to run redis container and mongo db if you save the mongo db inside the same machine and update
-  the `.env.production`
-- You need to create docker container for mongodb and redis this is up to you if you already host mongodb in another vps
-  or run `compose file` for development or update the environments inside the docker compose if you will
-  user `compose file`
-- to run docker compose file run `docker-compose up` to see logs or for in background `docker-compose up -d`
+### Running the Code (With Docker)
 
-### information's
+1. Install [Docker](https://www.docker.com) and Docker Compose.
+2. Run the `Dockerfile` if Docker is already installed on your system. Note that this only sets up v_chat_sdk and
+   doesn't include MongoDB or Redis. You need to manage these separately OR.
+3. Use a `compose file` witch manage all dependency together.
+4. Run `docker-compose up` to start the containers and view logs, or run `docker-compose up -d` to run in the
+   background.
 
-1. the app not use Persistent Data inside the system for chats it saved in `mongo` media in `S3`
-2. to insure the v chat works visit `HOST_OR_IP:PORT` if you see `Congratulations V_Chat_v2 working successfully`
+### Additional Information
 
-### some errors may happen
+1. The app doesn't use persistent data for chats, which are saved in MongoDB, while media is stored in S3.
+2. To ensure V_Chat_v2 is working, visit `HOST_OR_IP:PORT`. If you see "Congratulations V_Chat_v2 working successfully,"
+   it is functioning correctly.
 
-1. if you see `ERROR [ExceptionHandler] Configuration key "JWT_SECRET" does not exist
-   TypeError: Configuration key "JWT_SECRET" does not exist` this means the nestjs cant read your `.env.*` file
+### Common Errors
 
-- to fix this make sure you inject the environment variable or make sure the .env.production exist in the root of file
-  .git may ignore it
-- `The default Firebase app does not exist. Make sure you call initializeApp() before using any of the Firebase services.`
-- this happens because you enabled FCM but not [configure](https://www.youtube.com/watch?v=cXOzbKDXTh0) it
+1. If you encounter the error `ERROR [ExceptionHandler] Configuration key "JWT_SECRET" does not exist`, it means NestJS
+   cannot read your `.env.production` file.
 
-### Still need more support
+    - To fix this, ensure you have injected the environment variable or that `.env.production` exists in the root of the
+      project. It may be ignored by .git.
 
-- you can contact me at `hatemragapdev@gmail.com` or skype `live:.cid.607250433850e3a6` i offer server deployment and
-  free ssl configuration and database viewer and backup on the best for **150$** to deploy the
-  server side and migrate old users if you have already production app in about 8 hours
-- iam available for more customizations contact me
+2. If you see the
+   error `The default Firebase app does not exist. Make sure you call initializeApp() before using any of the Firebase services`
+   , it means you have enabled FCM but have not [configured](https://www.youtube.com/watch?v=cXOzbKDXTh0) it.
+
+### Need More Support?
+
+- If you need further assistance, contact the developer at `hatemragapdev@gmail.com` or via Skype
+  at `live:.cid.607250433850e3a6`. The developer offers server deployment, free SSL configuration, database viewer, and
+  backup services for **$150**. This includes server-side deployment and amazon s3 setup and migration of old users, if
+  you have an existing
+  production app, within approximately 8 hours this will insure all about server side 100% configure.
+- For additional customizations, feel free to reach out to the developer.

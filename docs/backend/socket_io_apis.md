@@ -4,18 +4,13 @@ id: socket.io
 title: Socket events
 ---
 
-
-
-## Socket Events
-
 In this section, we will explain all socket.io events used by V Chat and their respective responses.
 
 - to connect to the socket you need to make sure you use socket `clint v4`
 - add the auth to the `headers`
 ![socket](./img/socket_headers.png)
 
-
-
+  
 ### Client Listener (socket.on('EVENT'))
 
 #### 1. `v1OnNewMessage`
@@ -98,7 +93,7 @@ Triggered when a group member is kicked. The response contains information about
 
 ```json
 {
-  "roomId": "",
+  "roomId": "roomId",
   "userId": "userId"
 }
 ```
@@ -176,3 +171,5 @@ Triggered when a user enters a chat room. The response contains information abou
 5. `v1OnNewCall`
 6. `v1OnCallTimeout`
 7. `v1OnIceCandidate`
+
+![socket](./img/socket_events.png)

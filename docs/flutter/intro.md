@@ -4,24 +4,30 @@ id: intro
 title: Flutter intro
 ---
 
-## project structure
+## Project Structure
 
-- we have mono repo for handle flutter clint our project divided into some packages add the required following packages
+The V Chat SDK project is a mono-repo designed to handle the Flutter client. It is divided into several packages,
+including the following required and optional packages:
 
-1. [v_chat_sdk_core](https://pub.dev/packages/v_chat_sdk_core) **required** witch contains all http requests
-   and `VChatController` and handling the `socket.io` connections
-2. [v_chat_room_page](https://pub.dev/packages/v_chat_room_page) **required** contains all about room ui page
-3. [v_chat_message_page](https://pub.dev/packages/v_chat_message_page)**required**  contains all about message ui page
-4. [v_chat_utils](https://pub.dev/packages/v_chat_utils)**required**  contains all utils and some translate for the all
-   packages
-5. [v_chat_firebase_fcm](https://pub.dev/packages/v_chat_firebase_fcm) optional for support `FCM` push notifications
-6. [v_chat_one_signal](https://pub.dev/packages/v_chat_one_signal) optional for support one_signal push notifications
-   configure it [docs](https://documentation.onesignal.com/docs/flutter-sdk-setup)
-7. [v_chat_receive_share](https://pub.dev/packages/v_chat_receive_share)  optional for support receiving media from
-   other apps configure it [docs](https://pub.dev/packages/share_handler)
-8. [v_chat_web_rtc](https://pub.dev/packages/v_chat_web_rtc) optional for add support to webRtc calls configure
-   it [docs](https://pub.dev/packages/flutter_webrtc) please note not 100% stable and it use some paid service
-   for [turn](https://webrtc.org/getting-started/turn-server) servers
+1. [v_chat_sdk_core](https://pub.dev/packages/v_chat_sdk_core) **(required)** - Contains all HTTP requests,
+   the `VChatController`, and manages `socket.io` connections.
+2. [v_chat_room_page](https://pub.dev/packages/v_chat_room_page) **(required)** - Provides the UI for the chat room
+   page.
+3. [v_chat_message_page](https://pub.dev/packages/v_chat_message_page) **(required)** - Provides the UI for the chat
+   message page.
+4. [v_chat_utils](https://pub.dev/packages/v_chat_utils) **(required)** - Includes utility functions and translations
+   for all packages.
+Optional packages for extended functionality:
+
+5. [v_chat_firebase_fcm](https://pub.dev/packages/v_chat_firebase_fcm) - Adds support for Firebase Cloud Messaging (FCM)
+   push notifications.
+6. [v_chat_one_signal](https://pub.dev/packages/v_chat_one_signal) - Adds support for OneSignal push notifications. See
+   the [documentation](https://documentation.onesignal.com/docs/flutter-sdk-setup) for configuration details.
+7. [v_chat_receive_share](https://pub.dev/packages/v_chat_receive_share) - Enables support for receiving media from
+   other apps. Follow the [documentation](https://pub.dev/packages/share_handler) for configuration instructions.
+8. [v_chat_web_rtc](https://pub.dev/packages/v_chat_web_rtc) - Adds support for WebRTC calls. Configure it using
+   the [documentation](https://pub.dev/packages/flutter_webrtc). Please note that this is not 100% stable and relies on
+   some paid services for [TURN](https://webrtc.org/getting-started/turn-server) servers.
 
 ## android setup
 
