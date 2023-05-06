@@ -75,7 +75,7 @@ title: Backend installation
 5. to get deploy dist folder run `npm run build` this will generate `dist` file witch can use to run in production
    server
 6. access the server for development in `localhost:80` for production in port `80` if you need to change this
-   update
+   update if you cant access the server at this `port 80` you can change this port at `.env.production file`
 7. update this line in `.env file` update `PORT` if you run the docker then make sure to update
   then `environment variable os (env)`
 
