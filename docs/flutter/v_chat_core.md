@@ -30,8 +30,6 @@ Future initVChat(GlobalKey<NavigatorState> navigatorKey) async {
       maxBroadcastMembers: 512,
       //optional callback when user try to report some one else
       onReportUserPress: null,
-      //optional
-      googleMapsApiKey: "YOUR googleMapsApiKey",
       //must be same as the backend
       encryptHashKey: "V_CHAT_SDK_V2_VERY_STRONG_KEY",
       baseUrl: "Your v chat base url for local run put localhost:3001 for local run on emulator put 10.0.2.2:3001",

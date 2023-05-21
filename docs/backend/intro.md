@@ -9,13 +9,13 @@ title: Backend installation
 ### Requirements
 
 1. Install Node.js (version `v16` or higher) and npm. Check the Node.js version using `node -v`.
-2. Install only if you not `docker user` cross-env (`npm i -g cross-env`) for managing production or development
-   environments and NestJS
+2. Install only if you not `docker user` cross-env `npm i -g cross-env` for managing production or development
+   environments and pm2 for manage production deploy by `npm i -g pm2`
    CLI (`npm install -g @nestjs/cli`).
-3. Install [Redis](https://redis.io) (version `v7` or higher) for socket.io cluster mode support.
-4. Install [MongoDB](https://www.mongodb.com/try/download/community-kubernetes-operator) (minimum `v4.4`,
+
+3. Install [MongoDB](https://www.mongodb.com/try/download/community-kubernetes-operator) (minimum `v4.4`,
    recommended `v6`).
-5. Create an AWS account and register a new S3 bucket. Keep the following information handy:
+4. Create an AWS account and register a new S3 bucket. Keep the following information handy:
 
     - AWS_ACCESS_KEY_ID
     - AWS_SECRET_ACCESS_KEY
@@ -32,7 +32,6 @@ title: Backend installation
    ```
    DB_URL="mongodb://127.0.0.1:27017/v_chat_sdk_v2" # MongoDB full URL
    JWT_SECRET="a%dyFjcZp*xL$Qbek" # Secure password
-   REDIS_URL="redis://localhost:6379" # Redis server URL
    issuer="v_chat_sdk_v2@gmail.com"
    audience="chat.vchatsdk.com"
    encryptHashKey="V_CHAT_SDK_V2_VERY_STRONG_KEY" # Must be the same as the Flutter encryptHashKey and unchangeable
@@ -55,9 +54,10 @@ title: Backend installation
 
 ### Obtaining `firebase.adminsdk.json`
 
-1. To ensure chat notifications work properly, follow [this video](https://www.youtube.com/watch?v=cXOzbKDXTh0) to
+1. Make sure the firebase account is the same as the one used in flutter app.
+2. To ensure chat notifications work properly, follow [this video](https://www.youtube.com/watch?v=cXOzbKDXTh0) to
    obtain the `firebase.adminsdk.json` file.
-2. Replace the existing `firebase.adminsdk.json` file with your new one.
+3. Replace the existing `firebase.adminsdk.json` file with your new one.
 
 ### Obtaining OneSignal Keys
 
@@ -74,9 +74,10 @@ title: Backend installation
 
 1. Open a terminal in the `backend` root folder.
 2. Run `npm i` or `npm i --force` if issues occur.
-3. Run `npm run start:prod`.
-4. If you see "app run in production," your code is production-ready.
-5. Generate a `dist` folder for deployment with `npm run build`.
+3. Generate a `dist` folder `npm run build`.
+4. Run `npm run start:prod`. for live console logs if you run in production mode. in your vps server then you should
+   run `pm2 start ecosystem.config.js --only normal --env production`. to see logs run `pm2 logs`
+5. If you see `app run in production,` your code is production-ready.
 6. Access the development server at `localhost:80` and production server at port `80`. Update the port
    in `.env.production` if necessary.
 7. Update the `PORT` in the `.env` file if using Docker, and ensure you update the environment variable in the OS (env).
@@ -84,10 +85,12 @@ title: Backend installation
 ### Running the Code (With Docker)
 
 1. Install [Docker](https://www.docker.com) and Docker Compose.
-2. Run the `Dockerfile` if Docker is already installed on your system. Note that this only sets up v_chat_sdk and
+2. update `.env.production` this keys from `mongodb://127.0.0.1:27017/v_chat_sdk_v2`
+   to `mongodb://v_mongodb:27017/v_chat_sdk_v2`
+3. Run the `Dockerfile` if Docker is already installed on your system. Note that this only sets up v_chat_sdk and
    doesn't include MongoDB or Redis. You need to manage these separately OR.
-3. Use a `compose file` witch manage all dependency together.
-4. Run `docker-compose up` to start the containers and view logs, or run `docker-compose up -d` to run in the
+4. Use a `compose file` witch manage all dependency together.
+5. Run `docker-compose up` to start the containers and view logs, or run `docker-compose up -d` to run in the
    background.
 
 ### Additional Information
@@ -110,9 +113,24 @@ title: Backend installation
 
 ### Need More Support?
 
+- after purchasing this code you will get one free setup for the server side.
+- so you need to follow up this steps to get your server side ready to use.
+- configure the `.env.production` file with your own data. as shown above. and the firebase fcm file collect it from
+  your
+  firebase account. and configure the s3 or send me the data and i will configure it for you.
+- create `ubuntu` server and send me the ip address and the ssh key to access it.
+- To enable free SSL from Let's Encrypt for your domain, you will need to point the DNS of your domain to our VPS
+  hosting service. For example, if your domain is `example.com`, you can create a subdomain named `vchat.example.com`
+  and
+  point it to our `VPS` server. Additionally, it is important to add a wildcard route for `*.vchat.example.com` to ensure
+  proper functioning.
+- collect all data and send you purchasing key from `codecanyou` to `hatemragapdev@gmail.com` to get your free setup.
+
+### Contact
+
 - If you need further assistance, contact the developer at `hatemragapdev@gmail.com` or via Skype
   at `live:.cid.607250433850e3a6`. The developer offers server deployment, free SSL configuration, database viewer, and
-  backup services for **$150**. This includes server-side deployment and amazon s3 setup and migration of old users, if
+  backup services for **$100**. This includes server-side deployment and amazon s3 setup and migration of old users, if
   you have an existing
   production app, within approximately 8 hours this will insure all about server side 100% configure.
-- For additional customizations, feel free to reach out to the developer.
+- For additional customizations, feel free to reach out my.
