@@ -40,7 +40,7 @@ title: Apis
 - By using this identifier as the link between the two systems, you can seamlessly integrate the features of v_chat into
   your own system and provide a smooth user experience for your users. If you have any questions or need further
   assistance with the integration process, please don't hesitate to contact us.
-
+- `localId` used for identify messages so if you build web version you need to generate is from v4 uuid
 ## migrate old users
 
 - there are plan to migrate your old users to v chat if you already do the chat in firebase then you can migrate or any

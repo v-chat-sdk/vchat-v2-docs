@@ -171,46 +171,10 @@ await VChatController.I.roomApi.openChatWith(
 
 ## how to support new languages
 
-- there are two prebuilt language support `ar` and `en`
-- you can override them as you want by do the following5
-- in `MaterialApp` under `localizationsDelegates: []`  add this and make sure you add v_chat_utils to your pub.yaml
-- then add this delegate `VTrans.delegate` and make sure this line is above the `VTrans.delegate` to works
-- this method works with any translate package you use inside the your app
-
-``` 
- localizationsDelegates: [
-         GlobalMaterialLocalizations.delegate,
-         GlobalWidgetsLocalizations.delegate,
-         GlobalCupertinoLocalizations.delegate,
-         VTrans.withDefaultOverrides(
-             OverridesVChatAr(), const Locale("ar")), this line override the arbic lanague
-         VTrans.addNewLocal(NewVChatLangTr(), const Locale("tr")), // this line add new language support
-         VTrans.delegate, // make sure this is in the end of the list!!!
-  ],
-```
-
-- to override just make new class call it `OverridesVChatAr`
-- with the following data
-- v chat not support `countryCode` only just `languageCode`
-
-```
-class OverridesVChatAr extends VArLocalizations {
- //here you can override methods like
-  @override
-  String get search {
-    return "اوفررايد اختبار";
-  }
- }
- ```
-
-- same for English `OverridesVChatEn  extends VEnLocalizations {`
-
-#### Add new
-
-- for add new language create new class with the language name like `NewVChatLangTr`
-- then create the class like `class NewVChatLangTr extends VChatLocalizationLabels {}` and override all keys as you want
-
-#### to update v chat sdk language you need to call this `VChatController.I.updateLanguageCode("en");`
+- there are two packages need to be localized
+- `VMessagePage` and `VChatPage` each of theme accept `language:` parameter you can pass the language
+- as your system use if you use easy-local or flutter localization or any system, you can just fill the language model
+- as the current active language and v chat will use it
 
 ## do more
 

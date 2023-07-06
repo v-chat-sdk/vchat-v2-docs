@@ -122,7 +122,8 @@ title: Backend installation
 - To enable free SSL from Let's Encrypt for your domain, you will need to point the DNS of your domain to our VPS
   hosting service. For example, if your domain is `example.com`, you can create a subdomain named `vchat.example.com`
   and
-  point it to our `VPS` server. Additionally, it is important to add a wildcard route for `*.vchat.example.com` to ensure
+  point it to our `VPS` server. Additionally, it is important to add a wildcard route for `*.vchat.example.com` to
+  ensure
   proper functioning.
 - collect all data and send you purchasing key from `codecanyou` to `hatemragapdev@gmail.com` to get your free setup.
 
@@ -130,7 +131,8 @@ title: Backend installation
 
 - If you need further assistance, contact the developer at `hatemragapdev@gmail.com` or via Skype
   at `live:.cid.607250433850e3a6`. The developer offers server deployment, free SSL configuration, database viewer, and
-  backup services for **$100**. This includes server-side deployment and amazon s3 setup and migration of old users, if
+  backup services for **$100**. `after your free one` This includes server-side deployment and amazon s3 setup and
+  migration of old users, if
   you have an existing
   production app, within approximately 8 hours this will insure all about server side 100% configure.
 - For additional customizations, feel free to reach out my.
